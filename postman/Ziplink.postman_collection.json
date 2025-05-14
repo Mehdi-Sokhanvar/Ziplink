@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "66dbfae6-f38d-4e68-a574-498ca98753b6",
+		"name": "Ziplink",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44013118"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"ali@Gmail.com\",\r\n  \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Url",
+			"item": [
+				{
+					"name": "shorten",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "ali@Gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orginaUrl\": \"https://github.com/sivaprasadreddy/spring-boot-url-shortener/blob/main/spring-boot-url-shortener-final/src/main/java/com/sivalabs/urlshortener/web/controllers/SecurityUtils.java\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/shorten",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"shorten"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Custom Url",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "ali@Gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"originalURL\": \"https://github.com/sivaprasadreddy/spring-boot-url-shortener/blob/main/spring-boot-url-shortener-final/src/main/java/com/sivalabs/urlshortener/web/controllers/SecurityUtils.java\",\r\n  \"custom\": \"github\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customShorten",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customShorten"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
