@@ -35,6 +35,11 @@ public class User extends BaseEntity<Long> implements UserDetails  {
 
     }
 
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -63,6 +68,22 @@ public class User extends BaseEntity<Long> implements UserDetails  {
 
     public static Builder builder() {
         return new Builder();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public List<Url> getUrls() {
+        return urls;
+    }
+
+    public Double getCredit() {
+        return Credit;
     }
 
     public static class Builder {
