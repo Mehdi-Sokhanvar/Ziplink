@@ -1,4 +1,4 @@
-package com.ziplink.service;
+package com.ziplink.service.impl;
 
 
 import com.ziplink.dto.RegisterRequestDTO;
@@ -6,16 +6,16 @@ import com.ziplink.exception.custom.UserExistInDatabase;
 import com.ziplink.model.Role;
 import com.ziplink.model.User;
 import com.ziplink.repository.UserRepository;
+import com.ziplink.service.UserService;
 import jakarta.transaction.Transactional;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
 
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void register(RegisterRequestDTO request) {
-       findByEmail(request.email());
+        findByEmail(request.email());
         User user = User.builder()
                 .email(request.email())
                 .password(passwordEncoder.encode(request.password()))
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findUserByEmail(username).orElseThrow(()->new UsernameNotFoundException("User not found"));
+        return userRepository.findUserByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
 
